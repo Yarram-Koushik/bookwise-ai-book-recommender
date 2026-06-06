@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Dataset files - usually too large for GitHub
+backend/data/*.csv
+backend/data/*.zip
+
+# Node - for future frontend phase
+node_modules/
+dist/
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
