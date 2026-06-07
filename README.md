@@ -459,15 +459,6 @@ https://bookwise-ai-book-recommender-ew7un2por.vercel.app/
 
 ---
 
-## Author
-
-**Yarram Koushik**
-
-- GitHub: https://github.com/Yarram-Koushik
-- LinkedIn: Add your LinkedIn profile link here
-- Email: yerramkoushik4@gmail.com
-
----
 
 ## License
 
