@@ -3,7 +3,7 @@ import { Search, X } from 'lucide-react';
 import { searchBooks } from '../api/bookApi.js';
 import { normalizeImageUrl } from '../utils/bookUtils.js';
 
-function SearchBox({ onSelect, placeholder = 'Search a book title, for example Harry Potter...', autoFocus = false }) {
+function SearchBox({ onSelect, placeholder = 'Search a book title...', autoFocus = false }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -79,7 +79,7 @@ function SearchBox({ onSelect, placeholder = 'Search a book title, for example H
           {loading && <p className="px-4 py-4 text-sm text-slate-400">Searching books...</p>}
 
           {!loading && results.length === 0 && (
-            <p className="px-4 py-4 text-sm text-slate-400">No matching books found.</p>
+            <p className="px-4 py-4 text-sm text-slate-400">No matching books found. Try another title.</p>
           )}
 
           {!loading &&
@@ -99,7 +99,7 @@ function SearchBox({ onSelect, placeholder = 'Search a book title, for example H
                   )}
                   <span className="min-w-0">
                     <span className="line-clamp-2 text-sm font-bold text-white">{book.title}</span>
-                    <span className="mt-1 block truncate text-xs text-slate-400">{book.author}</span>
+                    <span className="mt-1 block truncate text-xs text-slate-400">{book.author || 'Unknown author'}</span>
                   </span>
                 </button>
               );

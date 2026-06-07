@@ -25,16 +25,18 @@ function Popular() {
   }, []);
 
   return (
-    <section className="px-4 py-16 sm:px-6 lg:px-8">
+    <section className="px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Popular books"
-          title="Top books from the dataset"
-          description="These books are ranked using popularity signals such as number of ratings and average rating."
+          title="Browse books readers are talking about"
+          description="A curated collection of highly active books from the library, based on rating activity and reader interest."
         />
-        {loading && <Loader />}
+        {loading && <Loader message="Loading popular books..." />}
         {!loading && books.length > 0 && <BookGrid books={books} />}
-        {!loading && books.length === 0 && <EmptyState />}
+        {!loading && books.length === 0 && (
+          <EmptyState title="No popular books found" message="Please refresh the page or try again later." />
+        )}
       </div>
     </section>
   );

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Star, Users, Sparkles } from 'lucide-react';
+import { BookOpen, Sparkles, Star, Users } from 'lucide-react';
 import { buildBookDetailsUrl, formatNumber, formatRating, normalizeImageUrl } from '../utils/bookUtils.js';
 
 function BookCard({ book, showScore = false }) {
   const imageUrl = normalizeImageUrl(book?.image_url);
+  const hasScore = showScore && book.similarity_score !== null && book.similarity_score !== undefined;
+  const scorePercent = hasScore ? Math.round(Number(book.similarity_score) * 100) : null;
 
   return (
     <article className="group glass-card flex h-full flex-col overflow-hidden rounded-3xl p-4 hover:-translate-y-1 hover:border-cyan-300/40">
@@ -20,7 +22,10 @@ function BookCard({ book, showScore = false }) {
           />
         ) : (
           <div className="grid h-72 place-items-center bg-slate-900 px-4 text-center text-sm text-slate-400 sm:h-80">
-            Cover unavailable
+            <div>
+              <BookOpen className="mx-auto mb-3 text-slate-500" size={34} />
+              Cover unavailable
+            </div>
           </div>
         )}
       </Link>
@@ -42,16 +47,22 @@ function BookCard({ book, showScore = false }) {
           </div>
           <div className="rounded-2xl bg-white/5 p-3">
             <div className="mb-1 flex items-center gap-1 text-cyan-300">
-              <Users size={14} /> Ratings
+              <Users size={14} /> Readers
             </div>
             <p className="font-bold text-white">{formatNumber(book.num_ratings)}</p>
           </div>
         </div>
 
-        {showScore && book.similarity_score !== null && book.similarity_score !== undefined && (
+        {hasScore && (
           <div className="mt-3 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-xs text-cyan-100">
-            <div className="flex items-center gap-2 font-semibold">
-              <Sparkles size={14} /> Match Score: {Number(book.similarity_score).toFixed(3)}
+            <div className="flex items-center justify-between gap-3 font-semibold">
+              <span className="inline-flex items-center gap-2">
+                <Sparkles size={14} /> Match
+              </span>
+              <span>{scorePercent}%</span>
+            </div>
+            <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-900/70">
+              <div className="h-full rounded-full bg-cyan-300" style={{ width: `${Math.min(scorePercent, 100)}%` }} />
             </div>
           </div>
         )}

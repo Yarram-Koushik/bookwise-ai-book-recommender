@@ -3,7 +3,7 @@ import EmptyState from '../components/EmptyState.jsx';
 
 function NotFound() {
   return (
-    <section className="px-4 py-20 sm:px-6 lg:px-8">
+    <section className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
       <div className="mx-auto max-w-3xl">
         <EmptyState title="Page not found" message="The page you are looking for does not exist." />
         <div className="mt-6 text-center">
