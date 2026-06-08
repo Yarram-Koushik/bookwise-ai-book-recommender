@@ -17,7 +17,7 @@ The project includes a Python machine learning recommendation engine, a FastAPI 
 ## Live Demo
 
 **Frontend:**  
-https://bookwise-ai-book-recommender-ew7un2por.vercel.app/
+https://bookwise-ai-book-recommender.vercel.app/
 
 **Backend API:**  
 https://bookwise-ai-backend.onrender.com/
